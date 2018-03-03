@@ -3,6 +3,7 @@ class Bomb():
     def __init__(self, p):
         self.pos = p.get()
         self.fusivel = millis() + 3000
+        self.alcance = 2
 
     def explodiu(self):
         if millis() > self.fusivel:
@@ -42,6 +43,10 @@ class Index():
 
     def get(self):
         return Index(self.i, self.j)
+    
+    def set(self, I, J):
+        self.i = I
+        self.j = J
     
     def equals(self, I, J):
        return (self.i, self.j) == (I, J) 

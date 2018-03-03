@@ -55,19 +55,19 @@ def draw():
         if (p1c[0] and mapa[p1.i][p1.j - 1] == 0
                 and nao_ha_bombas(p1.i, p1.j - 1)
                 and not p2.equals(p1.i, p1.j - 1)):
-                    p1.j -= 1
+            p1.j -= 1
         if (p1c[1] and mapa[p1.i][p1.j + 1] == 0
                 and nao_ha_bombas(p1.i, p1.j + 1)
                 and not p2.equals(p1.i, p1.j + 1)):
-                    p1.j += 1
+            p1.j += 1
         if (p1c[2] and mapa[p1.i - 1][p1.j] == 0
                 and nao_ha_bombas(p1.i - 1, p1.j)
                 and not p2.equals(p1.i - 1, p1.j)):
-                    p1.i -= 1
+            p1.i -= 1
         if (p1c[3] and mapa[p1.i + 1][p1.j] == 0
                 and nao_ha_bombas(p1.i + 1, p1.j)
                 and not p2.equals(p1.i + 1, p1.j)):
-                    p1.i += 1
+            p1.i += 1
 
     if p1c[4] and nao_ha_bombas(p1.i, p1.j):
         bombs.append(Bomb(p1))
@@ -77,19 +77,19 @@ def draw():
         if (p2c[0] and mapa[p2.i][p2.j - 1] == 0
                 and nao_ha_bombas(p2.i, p2.j - 1)
                 and not p1.equals(p2.i, p2.j - 1)):
-                    p2.j -= 1
+            p2.j -= 1
         if (p2c[1] and mapa[p2.i][p2.j + 1] == 0
                 and nao_ha_bombas(p2.i, p2.j + 1)
                 and not p1.equals(p2.i, p2.j + 1)):
-                    p2.j += 1
+            p2.j += 1
         if (p2c[2] and mapa[p2.i - 1][p2.j] == 0
                 and nao_ha_bombas(p2.i - 1, p2.j)
                 and not p1.equals(p2.i - 1, p2.j)):
-                    p2.i -= 1
+            p2.i -= 1
         if (p2c[3] and mapa[p2.i + 1][p2.j] == 0
                 and nao_ha_bombas(p2.i + 1, p2.j)
                 and not p1.equals(p2.i + 1, p2.j)):
-                    p2.i += 1
+            p2.i += 1
 
     if p2c[4] and nao_ha_bombas(p2.i, p2.j):
         bombs.append(Bomb(p2))
@@ -107,59 +107,59 @@ def draw():
         if b.explodiu():
             # CONFERINDO A AREA DA EXPLOSAO NAS QUATRO DIRECOES PARA...
             # para cima
-            # for    e = b.pos.j - 1 e >= b.pos.j - b.alcance -=1e ):
-            if mapa[b.pos.i][e] == 2:
-                break
-            # DESTRUIR BLOCOS DESTRUTÍVEIS...
-            if mapa[b.pos.i][e] == 1:
-                mapa[b.pos.i][e] = 0
-                continue
-            # E JOGADORES QUE SE ENCONTREM NO CAMINHO.
-            if p1.equals(b.pos.i, e):
-                p1.set(-1, -1)
-            if p2.equals(b.pos.i, e):
-                p2.set(-1, -1)
-            kaboom((b.pos.i + 0.5) * l, (e + 0.5) * l)
+            for e in range(b.pos.j - 1, b.pos.j - b.alcance - 1, -1):
+                if mapa[b.pos.i][e] == 2:
+                    break
+                # DESTRUIR BLOCOS DESTRUTÍVEIS...
+                if mapa[b.pos.i][e] == 1:
+                    mapa[b.pos.i][e] = 0
+                    continue
+                # E JOGADORES QUE SE ENCONTREM NO CAMINHO.
+                if p1.equals(b.pos.i, e):
+                    p1.set(-1, -1)
+                if p2.equals(b.pos.i, e):
+                    p2.set(-1, -1)
+                kaboom((b.pos.i + 0.5) * l, (e + 0.5) * l)
             # para baixo
-            # for(    e = b.pos.j + 1 e <= b.pos.j + b.alcance +=1e ):
-            if mapa[b.pos.i][e] == 2:
-                break
-            if mapa[b.pos.i][e] == 1:
-                mapa[b.pos.i][e] = 0
-                continue
-            #
-            if p1.equals(b.pos.i, e):
-                p1.set(-1, -1)
-            if p2.equals(b.pos.i, e):
-                p2.set(-1, -1)
-            kaboom((b.pos.i + 0.5) * l, (e + 0.5) * l)
-            # para a esquerda
-            # for(    e = b.pos.i - 1 e >= b.pos.i - b.alcance -=1e ):
-            if mapa[e][b.pos.j] == 2:
-                break
-            if mapa[e][b.pos.j] == 1:
-                mapa[e][b.pos.j] = 0
-                continue
-            if p1.equals(e, b.pos.j):
-                p1.set(-1, -1)
-            if p2.equals(e, b.pos.j):
-                p2.set(-1, -1)
-            kaboom((e + 0.5) * l, (b.pos.j + 0.5) * l)
-            # para a direita
-            # for(    e = b.pos.i + 1 e <= b.pos.i + b.alcance +=1e ):
-            if mapa[e][b.pos.j] == 2:
-                break
-            if mapa[e][b.pos.j] == 1:
-                mapa[e][b.pos.j] = 0
-                continue
+            for e in range(b.pos.j + 1, b.pos.j + b.alcance + 1):
+                if mapa[b.pos.i][e] == 2:
+                    break
+                if mapa[b.pos.i][e] == 1:
+                    mapa[b.pos.i][e] = 0
+                    continue
 
-            if p1.equals(e, b.pos.j):
-                p1.set(-1, -1)
-            if p2.equals(e, b.pos.j):
-                p2.set(-1, -1)
-            kaboom((e + 0.5) * l, (b.pos.j + 0.5) * l)
-            #
-        #del(b)  # indentar no for
+                if p1.equals(b.pos.i, e):
+                    p1.set(-1, -1)
+                if p2.equals(b.pos.i, e):
+                    p2.set(-1, -1)
+                kaboom((b.pos.i + 0.5) * l, (e + 0.5) * l)
+            # para a esquerda
+            for e in range(b.pos.i - 1, b.pos.i - b.alcance - 1, -1):
+                if mapa[e][b.pos.j] == 2:
+                    break
+                if mapa[e][b.pos.j] == 1:
+                    mapa[e][b.pos.j] = 0
+                    continue
+                if p1.equals(e, b.pos.j):
+                    p1.set(-1, -1)
+                if p2.equals(e, b.pos.j):
+                    p2.set(-1, -1)
+                kaboom((e + 0.5) * l, (b.pos.j + 0.5) * l)
+            # para a direita
+            for e in range(b.pos.i + 1, b.pos.i + 1 + b.alcance):
+                if mapa[e][b.pos.j] == 2:
+                    break
+                if mapa[e][b.pos.j] == 1:
+                    mapa[e][b.pos.j] = 0
+                    continue
+
+                if p1.equals(e, b.pos.j):
+                    p1.set(-1, -1)
+                if p2.equals(e, b.pos.j):
+                    p2.set(-1, -1)
+                kaboom((e + 0.5) * l, (b.pos.j + 0.5) * l)
+                
+            del(b)  
 
 
 def nao_ha_bombas(I, J):
@@ -171,10 +171,10 @@ def nao_ha_bombas(I, J):
 
 def kaboom(x, y):
     fill(random(160, 255), random(160, 255), 0)
-    N = round(random(5.501, 8.499))
+    N = int(random(5.501, 8.499))
     N *= 2
     beginShape()
-    t = TWO_PI / (N)
+    t = TWO_PI / N
     d = l * 0.8
     q = False
     for i in range(N):
