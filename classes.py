@@ -10,7 +10,7 @@ class Bomb():
         else:
             return False
 
-    def plot(self):
+    def plot(self, l):
         fill(0)
         ellipse((self.pos.i + 0.5) * l,
                 (self.pos.j + 0.5) * l, l, l)
@@ -24,14 +24,14 @@ class Tile():
     def atravessavel(self):
         return tipo == 0
 
-    def plot(self):
+    def plot(self, l):
         if self.tipo == 0:
             fill("#1CFF88")
         elif self.tipo == 1:
             fill("#FF831C")
         elif self.tipo == 2:
             fill("#5A5A5A")
-        rect(0, 0, l, l)
+        # rect(0, 0, l, l)
 
 
 class Index():
@@ -41,4 +41,7 @@ class Index():
         self.j = J
 
     def get(self):
-        return Index(i, j)
+        return Index(self.i, self.j)
+    
+    def equals(self, I, J):
+       return (self.i, self.j) == (I, J) 
