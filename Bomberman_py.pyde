@@ -62,7 +62,7 @@ def draw():
                     p1.j += 1
         if (p1c[2] and mapa[p1.i - 1][p1.j] == 0
                 and nao_ha_bombas(p1.i - 1, p1.j)
-                and notp2.equals(p1.i - 1, p1.j)):
+                and not p2.equals(p1.i - 1, p1.j)):
                     p1.i -= 1
         if (p1c[3] and mapa[p1.i + 1][p1.j] == 0
                 and nao_ha_bombas(p1.i + 1, p1.j)

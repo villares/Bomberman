@@ -24,14 +24,14 @@ class Tile():
     def atravessavel(self):
         return tipo == 0
 
-    def plot(self, l):
-        if self.tipo == 0:
-            fill("#1CFF88")
-        elif self.tipo == 1:
-            fill("#FF831C")
-        elif self.tipo == 2:
-            fill("#5A5A5A")
-        # rect(0, 0, l, l)
+    # def plot(self, l):
+    #     if self.tipo == 0:
+    #         fill("#1CFF88")
+    #     elif self.tipo == 1:
+    #         fill("#FF831C")
+    #     elif self.tipo == 2:
+    #         fill("#5A5A5A")
+    #     # rect(0, 0, l, l)
 
 
 class Index():
