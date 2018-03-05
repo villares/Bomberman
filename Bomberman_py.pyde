@@ -158,8 +158,7 @@ def draw():
                 if p2.equals(e, b.pos.j):
                     p2.set(-1, -1)
                 kaboom((e + 0.5) * l, (b.pos.j + 0.5) * l)
-                
-            del(b)  
+            bombs.remove(b)  
 
 
 def nao_ha_bombas(I, J):
